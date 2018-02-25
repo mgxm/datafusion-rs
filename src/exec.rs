@@ -761,7 +761,7 @@ mod tests {
             Field::new("lat", DataType::Double, false),
             Field::new("lng", DataType::Double, false)]);
 
-        let df = ctx.load("test/data/uk_cities.csv", &schema).unwrap();
+        let df = ctx.load("tests/data/uk_cities.csv", &schema).unwrap();
 
         // create an expression for invoking a scalar function
 //        let func_expr = Expr::ScalarFunction {
@@ -795,7 +795,7 @@ mod tests {
             Field::new("lat", DataType::Double, false),
             Field::new("lng", DataType::Double, false)]);
 
-        let df = ctx.load("test/data/uk_cities.csv", &schema).unwrap();
+        let df = ctx.load("tests/data/uk_cities.csv", &schema).unwrap();
 
         // sort by lat, lng ascending
         let df2 = df.sort(vec![
@@ -825,7 +825,7 @@ mod tests {
     fn create_context() -> ExecutionContext {
 
         // create execution context
-        let mut ctx = ExecutionContext::local("./test/data".to_string());
+        let mut ctx = ExecutionContext::local("./tests/data".to_string());
 
         // define schemas for test data
         ctx.define_schema("people", &Schema::new(vec![

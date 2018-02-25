@@ -21,7 +21,7 @@ fn dataframe() {
         Field::new("lng", DataType::Double, false)]);
 
     // open a CSV file as a dataframe
-    let df1 = ctx.load("test/data/uk_cities.csv", &schema).unwrap();
+    let df1 = ctx.load("tests/data/uk_cities.csv", &schema).unwrap();
 
     // filter on lat > 52.0
     let lat = df1.col("lat").unwrap();

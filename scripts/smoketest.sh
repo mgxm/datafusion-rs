@@ -30,7 +30,7 @@ sleep 2
 
 # run worker
 docker run --network=host -d -p 8088:8088 \
- -v`pwd`/test/data:/var/datafusion/data \
+ -v`pwd`/tests/data:/var/datafusion/data \
  --name datafusion datafusionrs/worker:latest \
  --etcd http://127.0.0.1:2379 \
  --bind 127.0.0.1:8088 \
@@ -43,16 +43,16 @@ sleep 2
 # run the console in interactive mode and run a test script
 docker run \
   --network=host \
-  -v`pwd`/test/data:/test/data \
+  -v`pwd`/tests/data:/tests/data \
   -it datafusionrs/console:latest \
  --etcd http://127.0.0.1:2379 \
- --script /test/data/smoketest.sql \
+ --script /tests/data/smoketest.sql \
  > _smoketest.txt
 
 
 # did we get the expected results?
 grep -v seconds _smoketest.txt > _a.txt
-grep -v seconds test/data/smoketest-expected.txt > _b.txt
+grep -v seconds tests/data/smoketest-expected.txt > _b.txt
 diff -b _a.txt _b.txt
 
 # clean up

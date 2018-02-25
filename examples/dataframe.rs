@@ -22,7 +22,7 @@ extern crate serde_json;
 fn main() {
 
     // create execution context
-    let ctx = ExecutionContext::local("./test/data".to_string());
+    let ctx = ExecutionContext::local("./tests/data".to_string());
 
     // define schema for data source (csv file)
     let schema = Schema::new(vec![
@@ -31,7 +31,7 @@ fn main() {
         Field::new("lng", DataType::Double, false)]);
 
     // open a CSV file as a dataframe
-    let df1 = ctx.load("test/data/uk_cities.csv", &schema).unwrap();
+    let df1 = ctx.load("tests/data/uk_cities.csv", &schema).unwrap();
     println!("df1: {}", df1.schema().to_string());
 
     // filter on lat > 52.0

@@ -273,7 +273,7 @@ mod tests {
             ]
         };
 
-        let csv = CsvFile { filename: "test/data/people.csv".to_string(), schema: schema.clone() };
+        let csv = CsvFile { filename: "tests/data/people.csv".to_string(), schema: schema.clone() };
 
         let filter_expr = BinaryExpr {
             left: Box::new(Column(0)),
